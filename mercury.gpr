@@ -1,0 +1,18 @@
+project Mercury is
+
+   for Languages use ("Ada", "C");
+   for Source_Dirs use ("src", "libada", "d2xx_linux");
+   for Object_Dir use "bin";
+   for Exec_Dir use "bin";
+   for Main use ("mercury2_prog.c");
+
+   package Compiler is
+      for Default_Switches ("Ada") use ("-gnat2022");
+      for Default_Switches ("C") use ("-O3");
+   end Compiler;
+
+   package Linker is
+      for Default_Switches ("C") use ("-pthread", "-ldl", "d2xx_linux/libftd2xx.a");
+   end Linker;
+
+end Mercury;
